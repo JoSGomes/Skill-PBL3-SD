@@ -40,9 +40,9 @@
             }
           ],
           "samples": [
+            "Altere o intervalo de conexão para {TimeConnection} minutos o intervalo de alarme para {TimeAlarm} minutos e o intervalo de estou bem para {TimeImOK} minutos",
+            "Conexão para {TimeConnection} minutos alarme para {TimeAlarm} e {TimeImOK} minutos",
             "altere a conexão para {TimeConnection} minutos alarme para {TimeAlarm} minutos e estou bem para {TimeImOK} minutos",
-            "{TimeConnection}  {TimeAlarm} e {TimeImOK}",
-            "altere conexão para {TimeConnection} minutos alarme para {TimeAlarm} minutos e estou bem para {TimeImOK} minutos",
             "altere conexão para dois minutos alarme para três minutos e estou bem para sete minutos"
           ]
         },
@@ -61,5 +61,5 @@
       "types": []
     }
   },
-  "version": "10"
+  "version": "12"
 }
