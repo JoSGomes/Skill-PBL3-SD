@@ -1,0 +1,65 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "dispositivo para motos",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "PublicDeviceIntent",
+          "slots": [
+            {
+              "name": "TimeConnection",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "TimeAlarm",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "TimeImOK",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "altere a conexão para {TimeConnection} minutos alarme para {TimeAlarm} minutos e estou bem para {TimeImOK} minutos",
+            "{TimeConnection}  {TimeAlarm} e {TimeImOK}",
+            "altere conexão para {TimeConnection} minutos alarme para {TimeAlarm} minutos e estou bem para {TimeImOK} minutos",
+            "altere conexão para dois minutos alarme para três minutos e estou bem para sete minutos"
+          ]
+        },
+        {
+          "name": "ConsultConnectionIntent",
+          "slots": [],
+          "samples": [
+            "estado da placa",
+            "Qual o estado da placa",
+            "Qual o estado da conexão",
+            "Qual a conexão da placa",
+            "A placa está conectada"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "10"
+}
