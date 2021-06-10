@@ -17,11 +17,16 @@ def consult_connection():
     atual = data_e_hora_atuais.astimezone(fuso)
     
     horalocal = atual.strftime('%H:%M:%S')
+    diaAtual = int(atual.strftime('%d'))
+    
     conn =  mysql.connector.connect(host=ENDPOINT, user=USR, passwd="password", port=PORT, database=DBNAME)
     cur = conn.cursor()
     
     cur.execute("SELECT `hour` FROM pbl.connections where id=1")
     lastPostingHour = str(cur.fetchall()).replace("(", "").replace(")", "").replace(",","").replace("'","").replace("[","").replace("]","")
+    
+    cur.execute("SELECT `day` FROM pbl.connections where id=1")
+    lastPostingDay = int(str(cur.fetchall()).replace("(", "").replace(")", "").replace(",","").replace("'","").replace("[","").replace("]",""))
     
     cur.execute("SELECT `interval` FROM pbl.connections where id=1")
     interval = str(cur.fetchall()).replace("(", "").replace(")", "").replace(",","").replace("'","").replace("[","").replace("]","")
@@ -33,9 +38,13 @@ def consult_connection():
     horalocalSplited = horalocal.split(":", 3)
     
     actualHourSum = int(horalocalSplited[0])*3600 + int(horalocalSplited[1])*60 + int(horalocalSplited[2])*1
-    
-    if(lastPostingHourSum+interval >= actualHourSum):
-        return("CONECTADA")
+    if(lastPostingDay >= diaAtual):
+        if(lastPostingHourSum+interval >= actualHourSum):
+            return("CONECTADA")
+        else:
+            cur.execute("UPDATE pbl.connections SET value = 'Desconectada' WHERE id ='1'")
+            conn.commit()
+            return("DESCONECTADA")
     else:
         cur.execute("UPDATE pbl.connections SET value = 'Desconectada' WHERE id ='1'")
         conn.commit()
