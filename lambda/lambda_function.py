@@ -65,8 +65,28 @@ class PublicDeviceIntentHandler(AbstractRequestHandler):
         connection = int(slots["TimeConnection"].value)
         alarm = int(slots["TimeAlarm"].value)
         imok = int(slots["TimeImOK"].value)
-        publish_function(connection*60, alarm*60, imok*60)
-        speak_output = "Ok! você disse que quer que o intervalo da conexão seja {connection} minutos, o alarme para {alarm} minutos  e estou bem {imok}.".format(alarm=alarm, connection=connection, imok=imok)
+        
+        unitConnection = slots["unitConnection"].value
+        unitAlarm = slots["unitAlarm"].value
+        unitImOK = slots["unitImOK"].value
+        
+        if(unitConnection == "minutos" or unitConnection == "minuto"):
+            connectionTime = connection*60
+        else:
+            connectionTime = connection
+            
+        if(unitAlarm == "minutos" or unitAlarm == "minuto"):
+            alarmTime = alarm*60
+        else:
+            alarmTime = alarm
+            
+        if(unitImOK == "minutos" or unitImOK == "minuto"):
+            imokTime = imok*60
+        else:
+            imokTime = imok
+
+        publish_function(connectionTime, alarmTime, imokTime)
+        speak_output = "Ok! você disse que quer que o intervalo da conexão seja {connection} {unitConnection}, o alarme para {alarm} {unitAlarm}  e estou bem {imok} {unitImOK}.".format(alarm=alarm, connection=connection, imok=imok, unitConnection=unitConnection, unitAlarm=unitAlarm, unitImOK=unitImOK)
         return (
             handler_input.response_builder
                 .speak(speak_output)

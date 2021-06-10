@@ -37,13 +37,25 @@
             {
               "name": "TimeImOK",
               "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "unitConnection",
+              "type": "AMAZON.FirstName"
+            },
+            {
+              "name": "unitAlarm",
+              "type": "AMAZON.FirstName"
+            },
+            {
+              "name": "unitImOK",
+              "type": "AMAZON.FirstName"
             }
           ],
           "samples": [
-            "Altere o intervalo de conexão para {TimeConnection} minutos o intervalo de alarme para {TimeAlarm} minutos e o intervalo de estou bem para {TimeImOK} minutos",
-            "Conexão para {TimeConnection} minutos alarme para {TimeAlarm} e {TimeImOK} minutos",
-            "altere a conexão para {TimeConnection} minutos alarme para {TimeAlarm} minutos e estou bem para {TimeImOK} minutos",
-            "altere conexão para dois minutos alarme para três minutos e estou bem para sete minutos"
+            "Conexão para {TimeConnection} {unitConnection} alarme para {TimeAlarm} {unitAlarm} e estou bem para {TimeImOK} {unitImOK}",
+            "Mudar conexão para {TimeConnection} {unitConnection} alarme para {TimeAlarm} {unitAlarm} e estou bem para {TimeImOK} {unitImOK}",
+            "altere a conexão para {TimeConnection} {unitConnection} alarme para {TimeAlarm} {unitAlarm} e estou bem para {TimeImOK} {unitImOK}",
+            "Altere o intervalo de conexão para {TimeConnection} {unitConnection} o intervalo de alarme para {TimeAlarm} {unitAlarm} e o intervalo de estou bem para {TimeImOK} {unitImOK}"
           ]
         },
         {
@@ -61,5 +73,5 @@
       "types": []
     }
   },
-  "version": "12"
+  "version": "14"
 }
